@@ -17,9 +17,7 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idTransaction;
-    @Enumerated(EnumType.STRING)
-    public PaymentType payment;
-    public Double amount;
-    public String user;
+    public String nameF;
+    public String gmailF;
 
 }

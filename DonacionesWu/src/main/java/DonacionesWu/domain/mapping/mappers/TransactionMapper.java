@@ -7,15 +7,13 @@ public class TransactionMapper {
 
     public static TransactionDto mapFrom(Transaction source){
         return new TransactionDto(source.getIdTransaction()
-                , source.getPayment()
-                , source.getAmount()
-                , source.getUser());
+                , source.getNameF()
+                , source.getGmailF());
     }
 
     public static Transaction mapFrom(TransactionDto source){
         return new Transaction(source.idTransaction()
-                , source.payment()
-                , source.amount()
-                , source.user());
+                , source.nameF()
+                , source.gmailF());
     }
 }

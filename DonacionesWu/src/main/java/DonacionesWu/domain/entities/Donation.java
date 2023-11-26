@@ -1,5 +1,6 @@
 package DonacionesWu.domain.entities;
 
+import DonacionesWu.domain.enums.PaymentType;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,11 +20,10 @@ public class Donation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idDonation;
     public LocalDate date;
-    public String donorName;
-    @ManyToOne
-    @JoinColumn(name = "idPerson")
-    private Person person;
+    public String name;
+    private Double amount;
     @OneToOne
     private Transaction transaction;
-
+    @Enumerated(EnumType.STRING)
+    public PaymentType payment;
 }

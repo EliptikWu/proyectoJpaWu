@@ -16,17 +16,17 @@ import java.util.List;
 public class PersonController {
     private final PersonService service;
 
-    @GetMapping("/list")
+    @GetMapping("/person/list")
     public String listAllPerson(Model model) {
         List<Person> personList = service.list();
         model.addAttribute("personList", personList);
-        return "index";
+        return "indexPerson";
     }
 
-    @GetMapping("/new")
+    @GetMapping("/person/new")
     public String agregar(Model model) {
         model.addAttribute("persona", new Person());
-        return "form";
+        return "PersonForm";
     }
 
     /**@GetMapping("/id")

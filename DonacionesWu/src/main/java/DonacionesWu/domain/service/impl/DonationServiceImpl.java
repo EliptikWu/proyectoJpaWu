@@ -26,12 +26,11 @@ public class DonationServiceImpl implements DonationService {
     }
 
     @Override
-    public Donation save(Donation donation) {
-        return repository.save(donation);
+    public void save(Donation t) {
+         repository.save(t);
     }
 
     @Override
-    public Donation delete(Donation donation) {
-        return repository.save(donation);
+    public void delete(int id) {
     }
 }

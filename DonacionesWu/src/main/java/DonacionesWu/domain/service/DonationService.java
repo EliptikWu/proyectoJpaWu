@@ -9,6 +9,6 @@ public interface DonationService {
   List<Donation> list();
   Donation byId(int id);
 
-  Donation save(Donation donation);
-  Donation delete(Donation donation);
+  void save(Donation t);
+  void delete(int id);
 }
