@@ -27,12 +27,12 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public Transaction save(Transaction transaction) {
-        return repository.save(transaction);
+    public void save(Transaction t) {
+         repository.save(t);
     }
 
     @Override
-    public Transaction delete(Transaction transaction) {
-        return repository.save(transaction);
+    public void delete(int id) {
+
     }
 }

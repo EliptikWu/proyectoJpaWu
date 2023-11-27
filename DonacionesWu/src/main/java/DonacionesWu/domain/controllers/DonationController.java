@@ -35,13 +35,13 @@ public class DonationController {
     public String createNewDonation(@RequestParam("name") String name,
                                     @RequestParam("amount") double amount,
                                     @RequestParam("transaction") int idTransaction,
-                                    @RequestParam("paymtentType")PaymentType payment) {
+                                    @RequestParam("paymentType")PaymentType payment) {
         Donation donation = Donation.builder()
                 .name(name)
                 .amount(amount)
                 .date(LocalDate.now())
-                .payment(PaymentType.valueOf(String.valueOf(payment)))
                 .transaction(TransactionService.byId(idTransaction))
+                .payment(PaymentType.valueOf(String.valueOf(payment)))
                 .build();
         DonationService.save(donation);
 

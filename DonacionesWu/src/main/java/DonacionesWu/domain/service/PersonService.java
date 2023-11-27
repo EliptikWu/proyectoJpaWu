@@ -9,6 +9,6 @@ import java.util.List;
 public interface PersonService {
     List<Person> list();
     Person byId(int id);
-    Person save(Person person);
-    Person delete(Person person);
+    void save(Person t);
+    void delete(int id);
 }

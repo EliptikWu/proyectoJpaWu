@@ -28,12 +28,12 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public Person save(Person person) {
-        return repository.save(person);
+    public void save(Person t) {
+         repository.save(t);
     }
 
     @Override
-    public Person delete(Person person) {
-        return repository.save(person);
+    public void delete(int id) {
+
     }
 }
