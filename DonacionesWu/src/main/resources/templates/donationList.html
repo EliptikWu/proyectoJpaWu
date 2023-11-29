@@ -2,18 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Donation List</title>
+    <title>Donation Section</title>
 </head>
 <body>
+<h2> Donation List</h2>
+
 <div class="container mt-4">
     <table>
         <thead>
         <tr>
             <th>
-                <h3>Nombre</h3>
+                <h3> Nombre </h3>
             </th>
             <th>
-                <h3>Amount</h3>
+                <h3> Amount </h3>
+            </th>
+            <th>
+                <h3> Payment Type </h3>
             </th>
         </tr>
         </thead>
@@ -21,6 +26,7 @@
         <tr th:each="donation: ${donations}">
             <td th:text="${donation.name}"></td>
             <td th:text="${donation.amount}"></td>
+            <td th:text="${donation.payment}"></td>
         </tr>
         </tbody>
     </table>

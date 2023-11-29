@@ -57,16 +57,37 @@ public class DonationController {
 
     @GetMapping("/donation/update")
     public ModelAndView updateDonation(){
-        ModelAndView modelAndView = new ModelAndView("UpdateDonation");
-        modelAndView.addObject("movies", DonationService.list());
+        ModelAndView modelAndView = new ModelAndView("donationUpdated");
+        modelAndView.addObject("donations", DonationService.list());
         return modelAndView;
     }
     @PostMapping("/donation/updated")
-    public String updateDonation(@RequestParam("id") int id,
-                              @RequestParam("name") String name){
-        DonationDto donationDto = DonationDto.builder().idDonation(id).name(name).build();
+    public String updateDonation(@RequestParam("idDonation") int idDonation,
+                              @RequestParam("name") String name,
+                              @RequestParam("amount") double amount,
+                              @RequestParam("transaction") String transactionT,
+                              @RequestParam("payment")String payment){
+        DonationDto donationDto = DonationDto.builder()
+                .idDonation(idDonation)
+                .name(name)
+                .amount(amount)
+                .date(LocalDate.now())
+                .transactionT(TransactionType.valueOf(String.valueOf(transactionT)))
+                .payment(PaymentType.valueOf(String.valueOf(payment)))
+                .build();
         DonationService.save(donationDto);
-        return "redirect:/movie/update?success";
+        return "redirect:/donation/update?success";
+    }
+    @GetMapping("/donation/delete")
+    public ModelAndView deleteDonation(){
+        ModelAndView modelAndView = new ModelAndView("donationDelete");
+        modelAndView.addObject("donations", DonationService.list());
+        return modelAndView;
+    }
+    @PostMapping("/donation/deleted")
+    public String deleteDonation(@RequestParam("idDonation") int idDonation) {
+        DonationService.delete(idDonation);
+        return "redirect:/donation/delete?success";
     }
 
 
