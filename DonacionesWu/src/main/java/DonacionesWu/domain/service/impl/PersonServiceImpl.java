@@ -2,6 +2,8 @@ package DonacionesWu.domain.service.impl;
 
 
 import DonacionesWu.domain.entities.Person;
+import DonacionesWu.domain.mapping.dto.PersonDto;
+import DonacionesWu.domain.mapping.mappers.PersonMapper;
 import org.springframework.stereotype.Service;
 import DonacionesWu.domain.repositories.PersonRepository;
 import DonacionesWu.domain.service.PersonService;
@@ -18,18 +20,23 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public List<Person> list() {
-        return (List<Person>)repository.findAll();
+    public List<PersonDto> list() {
+        List<Person> person = (List<Person>) repository.findAll();
+        List<PersonDto> personDto = PersonMapper.mapFrom(person);
+        return personDto;
     }
 
     @Override
-    public Person byId(int id) {
-        return repository.findById(id).orElseThrow();
+    public PersonDto byId(int id) {
+        Person person = repository.findById(id).orElseThrow();
+        PersonDto personDto = PersonMapper.mapFrom(person);
+        return personDto;
     }
 
     @Override
-    public void save(Person t) {
-         repository.save(t);
+    public void save(PersonDto t) {
+        Person person = PersonMapper.mapFrom(t);
+        repository.save(person);
     }
 
     @Override

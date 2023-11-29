@@ -3,6 +3,9 @@ package DonacionesWu.domain.mapping.mappers;
 import DonacionesWu.domain.entities.Donation;
 import DonacionesWu.domain.mapping.dto.DonationDto;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class DonationMapper {
     public static DonationDto mapFrom(Donation source){
         return new DonationDto(source.getIdDonation(),
@@ -10,7 +13,7 @@ public class DonationMapper {
                 source.getName(),
                 source.getAmount(),
                 source.getPayment(),
-                source.getTransaction()
+                source.getTransactionT()
                 );
     }
     public static Donation mapFrom(DonationDto source){
@@ -18,8 +21,12 @@ public class DonationMapper {
                 source.date(),
                 source.name(),
                 source.amount(),
-                source.transaction(),
-                source.payment()
+                source.payment(),
+                source.transactionT()
         );
     }
+    public static List<DonationDto> mapFrom(List<Donation> source){
+        return source.stream().map(DonationMapper::mapFrom).collect(Collectors.toList());
+    }
+
 }

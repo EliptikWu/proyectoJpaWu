@@ -1,6 +1,8 @@
 package DonacionesWu.domain.service.impl;
 
 import DonacionesWu.domain.entities.Donation;
+import DonacionesWu.domain.mapping.dto.DonationDto;
+import DonacionesWu.domain.mapping.mappers.DonationMapper;
 import org.springframework.stereotype.Service;
 import DonacionesWu.domain.repositories.DonationRepository;
 import DonacionesWu.domain.service.DonationService;
@@ -16,18 +18,23 @@ public class DonationServiceImpl implements DonationService {
     }
 
     @Override
-    public List<Donation> list() {
-        return (List<Donation>)repository.findAll();
+    public List<DonationDto> list() {
+        List<Donation> donation = (List<Donation>) repository.findAll();
+        List<DonationDto> donationDto = DonationMapper.mapFrom(donation);
+        return donationDto;
     }
 
     @Override
-    public Donation byId(int id) {
-        return repository.findById(id).orElseThrow();
+    public DonationDto byId(int id) {
+        Donation donation = repository.findById(id).orElseThrow();
+        DonationDto donationDto = DonationMapper.mapFrom(donation);
+        return donationDto;
     }
 
     @Override
-    public void save(Donation t) {
-         repository.save(t);
+    public void save(DonationDto t) {
+        Donation donation = DonationMapper.mapFrom(t);
+        repository.save(donation);
     }
 
     @Override

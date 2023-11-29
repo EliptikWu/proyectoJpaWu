@@ -1,6 +1,7 @@
 package DonacionesWu.domain.controllers;
 
 import DonacionesWu.domain.entities.Person;
+import DonacionesWu.domain.mapping.dto.PersonDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +19,7 @@ public class PersonController {
 
     @GetMapping("/person/list")
     public String listAllPerson(Model model) {
-        List<Person> personList = service.list();
+        List<PersonDto> personList = service.list();
         model.addAttribute("personList", personList);
         return "indexPerson";
     }

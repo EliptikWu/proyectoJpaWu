@@ -8,6 +8,7 @@
 <body>
 <h2> Create Donation</h2>
 
+<div class="container mt-4">
 <form th:action="@{/donation/new}" method="post" class="border p-3 form">
 <div class="mb-3">
     <div class="card mb-3" style="max-width: 540px;">
@@ -31,14 +32,14 @@
     </div>
     <label for="transaction" class="form-label">Foundation</label>
     <select class="form-select-sm" aria-label="Large select example" id="transaction" name="transaction">
-        <option value="1">Vagabundos</option>
+        <option> VAGABUNDOS</option>
     </select>
 <label for="payment" class="form-label">Payment Type</label>
 <select class="form-select-sm" aria-label="Large select example" id="payment" name="payment">
-    <option value="1">Credit card</option>
-    <option value="2">Debit card</option>
-    <option value="3">Paypal</option>
-    <option value="4">PSE</option>
+    <option >CREDITCARD</option>
+    <option >DEBITCARD</option>
+    <option >PAYPAL</option>
+    <option >PSE</option>
 </select>
 <div class="row mb-3">
     <div>
@@ -47,7 +48,10 @@
     </div>
 </div>
 </form>
-<br/>
+</div>
+<div th:if="${param.success}" class="container mt-4">
+    <p><h3>Donación exitosa</h3></p>
+</div>
 
 
 

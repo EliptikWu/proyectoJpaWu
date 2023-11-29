@@ -1,6 +1,7 @@
 package DonacionesWu.domain.entities;
 
 import DonacionesWu.domain.enums.PaymentType;
+import DonacionesWu.domain.enums.TransactionType;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,8 +23,8 @@ public class Donation {
     public LocalDate date;
     public String name;
     private Double amount;
-    @OneToOne
-    private Transaction transaction;
     @Enumerated(EnumType.STRING)
     public PaymentType payment;
+    @Enumerated(EnumType.STRING)
+    public TransactionType transactionT;
 }
